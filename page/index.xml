@@ -50,7 +50,7 @@ $ kubectl get jobs NAME DESIRED SUCCESSFUL AGE countdown 1 1 5s $ kubectl get po
       <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>http://kubernetesbyexample.com/logging/</guid>
-      <description>Logging is one option to understand what it going on inside your applications and the cluster at large. Basic logging in Kubernetes makes the output a container produces available, which is a good use case for debugging. More advanced setups consider logs across nodes and store them in a central place, either within the cluster or via a dedicated (cloud-based) service.
+      <description>Logging is one option to understand what is going on inside your applications and the cluster at large. Basic logging in Kubernetes makes the output a container produces available, which is a good use case for debugging. More advanced setups consider logs across nodes and store them in a central place, either within the cluster or via a dedicated (cloud-based) service.
 Let&amp;rsquo;s create a pod called logme that runs a container writing to stdout and stderr:</description>
     </item>
     
@@ -63,7 +63,7 @@ Let&amp;rsquo;s create a pod called logme that runs a container writing to stdou
       <description>In Kubernetes, the nodes are the worker machines where your pods run.
 As a developer you typically don&amp;rsquo;t deal with nodes, however as an admin you might want to familiarize yourself with node operations.
 To list available nodes in your cluster (note that the output will depend on the environment you&amp;rsquo;re using, I&amp;rsquo;m using Minishift):
-$ kubectl get nodes NAME STATUS AGE 192.168.99.100 Ready 14d  One interesting task, from a developer point of view, is to make Kubernetes schedule a pod on a certain task.</description>
+$ kubectl get nodes NAME STATUS AGE 192.168.99.100 Ready 14d  One interesting task, from a developer point of view, is to make Kubernetes schedule a pod on a certain node.</description>
     </item>
     
     <item>

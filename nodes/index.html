@@ -138,7 +138,7 @@ NAME             STATUS    AGE
 </code></pre>
 
 <p>One interesting task, from a developer point of view, is to make Kubernetes
-schedule a pod on a certain task. For this, we first need to label the node
+schedule a pod on a certain node. For this, we first need to label the node
 we want to target:</p>
 
 <pre><code class="language-bash">$ kubectl label nodes 192.168.99.100 shouldrun=here
@@ -146,7 +146,7 @@ node &quot;192.168.99.100&quot; labeled
 </code></pre>
 
 <p>Now we can create a <a href="https://github.com/mhausenblas/kbe/blob/master/specs/nodes/pod.yaml">pod</a>
-that gets scheduled on the node we&rsquo;ve with the label <code>shouldrun=here</code>:</p>
+that gets scheduled on the node with the label <code>shouldrun=here</code>:</p>
 
 <pre><code class="language-bash">$ kubectl create -f https://raw.githubusercontent.com/mhausenblas/kbe/master/specs/nodes/pod.yaml
 
