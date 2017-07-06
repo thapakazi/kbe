@@ -145,33 +145,15 @@ in the same namespace (<code>default</code>, since we didn&rsquo;t specify anyth
 </code></pre>
 
 <p>The DNS add-on will make sure that our service <code>thesvc</code> is available via the FQDN
-<code>thesvc.default.svc.cluster.local</code> from other pods in the cluster. Let&rsquo;s look up
-the IP the service is available on using a DNS
-lookup tool called <code>dig</code> which is available on the jump pod:</p>
+<code>thesvc.default.svc.cluster.local</code> from other pods in the cluster. Let&rsquo;s try it out:</p>
 
-<pre><code class="language-bash">$ kubectl exec jumpod -c shell -i -t -- dig thesvc.default.svc.cluster.local
-
-; &lt;&lt;&gt;&gt; DiG 9.9.4-RedHat-9.9.4-38.el7_3.3 &lt;&lt;&gt;&gt; thesvc.default.svc.cluster.local
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 32925
-;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;thesvc.default.svc.cluster.local. IN   A
-
-;; ANSWER SECTION:
-thesvc.default.svc.cluster.local. 30 IN A       172.30.192.196
-
-;; Query time: 2 msec
-;; SERVER: 192.168.99.100#53(192.168.99.100)
-;; WHEN: Wed May 10 09:15:43 UTC 2017
-;; MSG SIZE  rcvd: 66
+<pre><code class="language-bash">$ kubectl exec jumpod -c shell -i -t -- ping thesvc.default.svc.cluster.local
+PING thesvc.reshifter.svc.cluster.local (172.30.251.137) 56(84) bytes of data.
+...
 </code></pre>
 
-<p>The answer to the DNS query tells us that the service is available via the cluster
-IP <code>172.30.192.196</code>. We can directly connect to and consume the service (
-in the same namespace) like so:</p>
+<p>The answer to the <code>ping</code> tells us that the service is available via the cluster
+IP <code>172.30.251.137</code>. We can directly connect to and consume the service (in the same namespace) like so:</p>
 
 <pre><code class="language-bash"> $ kubectl exec jumpod -c shell -i -t -- curl http://thesvc/info
 {&quot;host&quot;: &quot;thesvc&quot;, &quot;version&quot;: &quot;0.5.0&quot;, &quot;from&quot;: &quot;172.17.0.5&quot;}
