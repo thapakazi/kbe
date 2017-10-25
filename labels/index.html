@@ -131,8 +131,7 @@ So you&rsquo;re free to choose labels as you see fit, for example, to express
 environments such as &lsquo;this pod is running in production&rsquo; or ownership,
 like &lsquo;department X owns that pod&rsquo;.</p>
 
-<p>Let&rsquo;s create a <a href="https://github.com/mhausenblas/kbe/blob/master/specs/labels/pod.yaml">pod</a>
-that initially has one label (<code>env=development</code>):</p>
+<p>Let&rsquo;s create a <a href="https://github.com/mhausenblas/kbe/blob/master/specs/labels/pod.yaml">pod</a> that initially has one label (<code>env=development</code>):</p>
 
 <pre><code class="language-bash">$ kubectl create -f https://raw.githubusercontent.com/mhausenblas/kbe/master/specs/labels/pod.yaml
 
@@ -144,7 +143,7 @@ labelex    1/1       Running   0          10m    env=development
 <p>In above <code>get pods</code> command note the <code>--show-labels</code> option that output the
 labels of an object in an additional column.</p>
 
-<p>You can add a label to the pod like so:</p>
+<p>You can add a label to the pod as:</p>
 
 <pre><code class="language-bash">$ kubectl label pods labelex owner=michael
 

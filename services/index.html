@@ -152,7 +152,7 @@ $ kubectl describe pod rcsise-6nq3k
 Name:                   rcsise-6nq3k
 Namespace:              default
 Security Policy:        restricted
-Node:                   192.168.99.100/192.168.99.100
+Node:                   localhost/192.168.99.100
 Start Time:             Tue, 25 Apr 2017 14:47:45 +0100
 Labels:                 app=sise
 Status:                 Running
@@ -170,7 +170,7 @@ assigned IP <code>172.17.0.3</code>:</p>
 </code></pre>
 
 <p>This is however, as mentioned above, not advisable since the IPs assigned
-to pods may change. Enter the <code>simpleservice</code> we&rsquo;ve created:</p>
+to pods may change. Hence, enter the <code>simpleservice</code> we&rsquo;ve created:</p>
 
 <pre><code class="language-bash">$ kubectl get svc
 NAME              CLUSTER-IP       EXTERNAL-IP   PORT(S)                   AGE

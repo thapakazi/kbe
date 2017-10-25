@@ -38,7 +38,7 @@ $ kubectl create -f https://raw.githubusercontent.com/mhausenblas/kbe/master/spe
       <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>http://kubernetesbyexample.com/jobs/</guid>
-      <description>A jobs is a supervisor for pods carrying out batch processes, that is, a process that runs for a certain time to completion, for example a calculation or a backup operation.
+      <description>A job is a supervisor for pods carrying out batch processes, that is, a process that runs for a certain time to completion, for example a calculation or a backup operation.
 Let&amp;rsquo;s create a job called countdown that supervises a pod counting from 9 down to 1:
 $ kubectl create -f https://raw.githubusercontent.com/mhausenblas/kbe/master/specs/jobs/job.yaml  You can see the job and the pod it looks after like so:
 $ kubectl get jobs NAME DESIRED SUCCESSFUL AGE countdown 1 1 5s $ kubectl get pods --show-all NAME READY STATUS RESTARTS AGE countdown-lc80g 0/1 Completed 0 16s  To learn more about the status of the job, do:</description>
@@ -154,7 +154,7 @@ $ kubectl create -f https://raw.githubusercontent.com/mhausenblas/kbe/master/spe
       
       <guid>http://kubernetesbyexample.com/diy/</guid>
       <description>If you want to try out the examples here yourself, you can use the same setup I&amp;rsquo;ve got locally running on my machine:
- Install Minishift Install oc Run minishift start Log in using oc login -u system:admin with password admin Create a symlink from oc like so: ln -s oc kubectl  All examples have been carried out with the following version, that is, oc 1.4.1 and Minishift 1.0.0-rc.1 (i.</description>
+ Install Minishift Run minishift start Configure OpenShift Client binary (oc) by running eval $(minishift oc-env) Log in using oc login -u system:admin with password admin Create a symlink from oc like so: ln -s $(which oc) /usr/local/bin/kubectl  All examples have been carried out with Minishift version v1.</description>
     </item>
     
     <item>

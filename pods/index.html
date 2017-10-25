@@ -124,7 +124,9 @@
   <div class="container" role="main">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p>A pod is a collection of containers sharing a network and mount namespace
+        
+
+<p>A pod is a collection of containers sharing a network and mount namespace
 and is the basic unit of deployment in Kubernetes. All containers in a pod
 are scheduled on the same node.</p>
 
@@ -154,8 +156,10 @@ which we&rsquo;ve learned from the <code>kubectl describe</code> command above:<
 <p>Note that <code>kubectl run</code> creates a <a href="/deployments/">deployment</a>, so in order to
 get rid of the pod you have to execute <code>kubectl delete deployment sise</code>.</p>
 
-<p>Alternatively you can create a pod from a configuration file. In our case
-the <a href="https://github.com/mhausenblas/kbe/blob/master/specs/pods/pod.yaml">pod</a> is
+<h4 id="using-configuration-file">Using configuration file</h4>
+
+<p>You can also create a pod from a configuration file.
+In this case the <a href="https://github.com/mhausenblas/kbe/blob/master/specs/pods/pod.yaml">pod</a> is
 running the already known <code>simpleservice</code> image from above along with
 a generic <code>CentOS</code> container:</p>
 
@@ -170,7 +174,7 @@ twocontainers             2/2       Running   0          7s
 on localhost:</p>
 
 <pre><code class="language-bash">$ kubectl exec twocontainers -c shell -i -t -- bash
-[root@twocontainers /]# curl localhost:9876/info
+[root@twocontainers /]# curl -s localhost:9876/info
 {&quot;host&quot;: &quot;localhost:9876&quot;, &quot;version&quot;: &quot;0.5.0&quot;, &quot;from&quot;: &quot;127.0.0.1&quot;}
 </code></pre>
 
