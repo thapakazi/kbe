@@ -1,0 +1,24 @@
+* Use:
+  - two containers in a pod
+    #+BEGIN_SRC bash
+        kubectl create -f https://raw.githubusercontent.com/thapakazi/kbe/master/specs/pods/pod.yaml    
+    #+END_SRC
+
+  - curl the nginx
+    #+BEGIN_SRC bash
+    curl `kubectl describe po twocontainers|grep -i ip|awk '{print $2}'`
+    #+END_SRC
+
+  - exec into nginx
+    #+BEGIN_SRC bash
+    kubectl exec twocontainers -c nginx -i -t -- cat /proc/mounts | grep '/usr/share/nginx/html'
+    kubectl exec twocontainers -c busybox -i -t -- cat /proc/mounts | grep '/data'
+    #+END_SRC
+
+    #+BEGIN_EXAMPLE
+[node2 /]$     kubectl exec twocontainers -c busybox -i -t -- cat /proc/mounts | grep '/data'
+/dev/mapper/docker-202:1-770655-2d28690670fc2cefc73dedec944c90f509c7800575bc04ccf907a518f27e194e /data xfs rw,relatime,nouuid,attr2,inode64,sunit=256,swidth=1024,noquota 0 0
+[node2 /]$     kubectl exec twocontainers -c nginx -i -t -- cat /proc/mounts | grep '/usr/share/nginx/html'
+/dev/mapper/docker-202:1-770655-2d28690670fc2cefc73dedec944c90f509c7800575bc04ccf907a518f27e194e /usr/share/nginx/html xfs ro,relatime,nouui
+d,attr2,inode64,sunit=256,swidth=1024,noquota 0 0
+    #+END_EXAMPLE
