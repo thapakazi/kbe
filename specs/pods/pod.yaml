@@ -4,13 +4,22 @@ metadata:
   name: twocontainers
 spec:
   containers:
-  - name: sise
-    image: mhausenblas/simpleservice:0.5.0
-    ports:
-    - containerPort: 9876
-  - name: shell
-    image: centos:7
+  - name: nginx
+    image: nginx
+    volumeMounts:
+      - name: content
+        mountPath: /usr/share/nginx/html
+        readOnly: true
+
+  - name: busybox
+    image: busybox
     command:
-      - "bin/bash"
-      - "-c"
-      - "sleep 10000"
+      - sh
+      - -c
+      - while true; do (hostname; date) > /data/index.html; sleep 1; done
+    volumeMounts:
+      - name: content
+        mountPath: /data
+        
+  volumes:
+  - name: content
